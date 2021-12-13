@@ -46,8 +46,7 @@
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- Select2 -->
-<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
-<link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
 <script>
     $(function () {
         $("#example1").DataTable({
@@ -66,7 +65,10 @@
             "responsive": true,
         });
     });
-    $('.select2').select2()
+    $(document).ready(function () {
+        $(".select2").select2();
+
+    })
 </script>
 </body>
 

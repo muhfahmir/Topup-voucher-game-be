@@ -7,11 +7,11 @@ a {
   color: #00B7FF;
 } */
 
-.select2-container .select2-selection-single{
+.select2-container .select2-selection--single {
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  height: 48px;
+  height: 38px;
   user-select: none;
   -webkit-user-select: none;
 }
