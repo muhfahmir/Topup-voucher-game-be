@@ -15,7 +15,7 @@ module.exports = {
       const voucher = await Voucher.find()
         .populate("category")
         .populate("nominals");
-      console.log(voucher);
+      // console.log(voucher);
       res.render("admin/voucher/view_voucher", {
         voucher,
         alert,
@@ -210,6 +210,26 @@ module.exports = {
         fs.unlinkSync(currentImage);
       }
       req.flash("alertMessage", "Berhasil hapus voucher");
+      req.flash("alertStatus", "success");
+      res.redirect("/voucher");
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/voucher");
+      console.log(error);
+    }
+  },
+
+  actionStatus: async (req, res) => {
+    try {
+      const { id } = req.params;
+      let voucher = await Voucher.findOne({ _id: id });
+      console.log(voucher);
+      let status = voucher.status === "Y" ? "N" : "Y";
+      console.log(status);
+
+      voucher = await Voucher.findOneAndUpdate({ _id: id }, { status });
+      req.flash("alertMessage", "Berhasil ubah status");
       req.flash("alertStatus", "success");
       res.redirect("/voucher");
     } catch (error) {
