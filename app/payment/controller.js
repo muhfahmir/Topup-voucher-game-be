@@ -12,6 +12,8 @@ module.exports = {
       res.render("admin/payment/view_payment", {
         payment,
         alert,
+        name: req.session.user.name,
+        title: "Halaman Jenis Pembayaran",
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -24,7 +26,11 @@ module.exports = {
   viewCreate: async (req, res) => {
     try {
       const banks = await Bank.find();
-      res.render("admin/payment/create", { banks });
+      res.render("admin/payment/create", {
+        banks,
+        name: req.session.user.name,
+        title: "Halaman Tambah Jenis Pembayaran",
+      });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
       req.flash("alertStatus", "danger");
@@ -60,6 +66,8 @@ module.exports = {
       res.render("admin/payment/edit", {
         payment,
         banks,
+        name: req.session.user.name,
+        title: "Halaman Ubah Jenis Pembayaran",
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
