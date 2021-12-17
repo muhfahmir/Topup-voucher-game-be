@@ -61,7 +61,7 @@ module.exports = {
           ];
         let filename = req.file.filename + "." + originalExt;
         let target_path = path.resolve(
-          config.rootPah,
+          config.rootPath,
           `public/uploads/${filename}`
         );
 

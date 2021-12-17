@@ -53,6 +53,7 @@
             </td>
 
             <td>
+                <% if (transaction[i].status === 'pending') { %>
                 <form action="/transaction/status/<%= transaction[i]._id %>?status=failed&_method=PUT" method="post"
                     style="display: inline-block;">
 
@@ -67,6 +68,8 @@
                         <i class="fas fa-check "></i> Terima
                     </button>
                 </form>
+                <% } %>
+
             </td>
         </tr>
         <% } %>
